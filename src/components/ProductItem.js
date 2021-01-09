@@ -54,7 +54,7 @@ const ProductItem = ({ item }) => {
                     <div className="productItem__product__meta">
                         <p><strong>{ item.name }</strong></p>
                         <p><strong>Price:</strong> £{ item.price }</p>
-                        <p><strong>Color:</strong> { item.colour }</p>
+                        <p><strong>Colour:</strong> { item.colour }</p>
                     </div>
             </div>
             <div className="productItem__edit">
