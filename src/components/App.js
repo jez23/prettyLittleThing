@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route , Switch, HashRouter} from 'react-router-dom';
 import { ConstProvider } from '../contexts/Context';
 
 import Header from './Header';
@@ -14,15 +14,17 @@ import '../css/imports.css';
 const App = () => {
     return (
         <ConstProvider>
-             <BrowserRouter >
-                <Header />
-                <PromotionalBanner />
+             <HashRouter>
+                <div className="topNav"> 
+                    <Header />
+                    <PromotionalBanner />
+                </div>
                     <Switch >
                         <Route path="/" exact component={Cart} />
-                        <Route path="/checkout" exact component={Checkout} />
+                        <Route path="/checkout" component={Checkout} />
                     </Switch>
                 <Footer />
-            </BrowserRouter>
+            </HashRouter>
         </ConstProvider>  
     )
 }

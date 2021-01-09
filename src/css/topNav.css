@@ -1,0 +1,13 @@
+@media only screen and (max-width: 800px) {
+    .topNav{
+        position: fixed;
+        width: 100%;
+    }
+    .header{
+        background-color: white;
+    }
+    .container__inner {
+        margin-top: 200px;
+    }
+
+}

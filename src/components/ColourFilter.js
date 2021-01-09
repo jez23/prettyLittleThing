@@ -5,7 +5,7 @@ import Context from  '../contexts/Context';
 
 const ColourFilter = ( ) => {
 
-    const { products, setProducts, colours, productsGlobal } = useContext(Context) 
+    const { setProducts, colours, productsGlobal, setSubTotal , products} = useContext(Context) 
 
     const filter = (e) => {
         const colouredProducts = [...productsGlobal]
@@ -14,18 +14,25 @@ const ColourFilter = ( ) => {
         })
         setProducts([...matching]);
     }
+    const showAll = (globalArray, products) => {
+        const subTotal = (array) => {
+            return array.reduce((acc, cur) => acc + cur.price * cur.quantity , 0);
+        }
+        setSubTotal(subTotal(globalArray));
+        setProducts(globalArray)
+    }
+  
+
     return (
-     
          <div className="colourFilter">
              <span>FILTER BY:</span>
-            {products.length > 0 &&  <select onChange={(e) => filter(e.target.value)} id="ccolor" name="color">
-                    <option value="" selected disabled hidden>Colour</option>
+             <select onChange={(e) => filter(e.target.value)} id="ccolor" name="color">
+                    <option value="" defaultValue hidden>Colour</option>
                     { colours.map( product => {
-                        return <option value={product}>{product}</option>
+                        return <option value={product} key={product}>{product}</option>
                     })}
                 </select>
-            }
-             <button className="btn white" onClick={() => setProducts(productsGlobal)}>Show All</button>
+             <button className="btn white" onClick={() => showAll(productsGlobal, products)}>Show All</button>
         </div> 
     
     )

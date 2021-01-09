@@ -4,12 +4,12 @@ import Context from '../contexts/Context';
 
 const SubTotal = () => {
 
-    const { 
-        subTotal,
+    const { subTotal,
        } = useContext(Context) 
+
     return (
         <div className="cartTable__subtotal">
-            <span>Subtotal: £{ subTotal.toFixed(2) }</span>
+            <span>Subtotal: £{ subTotal.toFixed(2) || 0}</span>
         </div>
     )
 }

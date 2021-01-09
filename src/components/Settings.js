@@ -7,13 +7,13 @@ const Settings = () => {
                <a href="https://www.prettylittlething.com/faq">Need Help?</a>
            </div>
            <div>
-             <i class="fa fa-user-o" aria-hidden="true"></i>
+             <i className="fa fa-user-o" aria-hidden="true"></i>
            </div>
            <div>
-             <i class="fa fa-heart-o" aria-hidden="true"></i>
+             <i className="fa fa-heart-o" aria-hidden="true"></i>
            </div>
            <div>
-             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+             <i className="fa fa-shopping-bag" aria-hidden="true"></i>
            </div>
        </>
     )

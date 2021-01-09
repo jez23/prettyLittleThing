@@ -94,6 +94,7 @@
 }
 .productItem__product__meta{
     margin-left: 5px;
+    width: 100%;
 }
 .productItem__product__meta p{
     margin-bottom: 5px;

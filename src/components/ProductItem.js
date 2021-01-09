@@ -6,28 +6,28 @@ const ProductItem = ({ item }) => {
 
     const { products, setProducts, setSubTotal } = useContext(Context);
 
-    const increment = () => {
-            const addOne = whichOneToChange("addItem")
+    const increment = (array) => {
+            const addOne = whichOneToChange("addItem", array)
             setProducts([...addOne]);
             setSubTotal(subTotal([...addOne]));
     }
-    const decrement = () => {
+    const decrement = (array) => {
         if(item.quantity > 0){
-            const minusOne = whichOneToChange("removeItem");
+            const minusOne = whichOneToChange("removeItem", array);
             setProducts([...minusOne]);
             setSubTotal(subTotal([...minusOne]));
         } else{
-            deleteItem();
+            deleteItem(array);
         }
     }
-    const deleteItem = () => {
-        const filter = products.filter(product => product.id !== item.id);
+    const deleteItem = (array) => {
+        const filter = array.filter(product => product.id !== item.id);
         setProducts([...filter]);
         setSubTotal(subTotal([...filter]));
     }
-    const changeQtyManually = (e) => {
-        const change = [...products];
-        const toChange = products.filter(product => product.id === item.id)
+    const changeQtyManually = (e, array) => {
+        const change = [...array];
+        const toChange = change.filter(product => product.id === item.id)
         toChange[0].quantity = e.target.value;
         const index = change.findIndex(el => el.id === item.id);
         change[index] = toChange[0];  
@@ -35,11 +35,11 @@ const ProductItem = ({ item }) => {
         setSubTotal(subTotal([...change]));
     }
     const subTotal = (array) => {
-        return array.reduce((acc, cur) => acc + +cur.totalToPay * cur.quantity, 0)
+        return array.reduce((acc, cur) => acc + +cur.price * cur.quantity, 0)
     }
-    const whichOneToChange = (method) => {
-        const change = [...products];
-        const toChange = products.filter(product => product.id === item.id)
+    const whichOneToChange = (method, array) => {
+        const change = [...array];
+        const toChange = change.filter(product => product.id === item.id)
         toChange[0][method](); 
         const index = change.findIndex(el => el.id === item.id);
         change[index] = toChange[0];  
@@ -59,12 +59,12 @@ const ProductItem = ({ item }) => {
             </div>
             <div className="productItem__edit">
                 <div className="productItem__edit__increment">
-                    <button className="btnCounter" onClick={decrement}>-</button>
+                    <button className="btnCounter" onClick={() => decrement(products)}>-</button>
                         <input  min="0" type="number" value={item.quantity} onChange={changeQtyManually} id="quantity"></input>
-                    <button className="btnCounter" onClick={increment}>+</button>
+                    <button className="btnCounter" onClick={() => increment(products)}>+</button>
                 </div>
                 <div className="productItem__edit__delete">
-                    <button className="btnRemove" onClick={deleteItem}><i className="fa fa-trash" aria-hidden="true"></i> Remove</button>
+                    <button className="btnRemove" onClick={() => deleteItem(products)}><i className="fa fa-trash" aria-hidden="true"></i> Remove</button>
                 </div>
             </div>
             <div className="productItem__totals">
