@@ -1,0 +1,26 @@
+.colourFilter{
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px;
+    align-items: center;
+}
+.colourFilter select, span {
+    font-size: 18px;
+}
+.colourFilter select {
+    cursor: pointer;
+    padding: 5px;
+}
+.colourFilter select:hover {
+    background-color:  #e4e4e4;
+}
+@media only screen and (max-width: 800px) {
+    .colourFilter{
+        margin-bottom: 5px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        align-items: center;
+    }
+}

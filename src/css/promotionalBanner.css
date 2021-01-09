@@ -1,0 +1,15 @@
+.promotionalBanner__link{
+    text-decoration: none;
+}
+.promotionalBanner{
+    background-color: #FDBEDB;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 50px;
+    font-size: 18px;
+}
+.promotionalBanner span{
+    color: white;
+    text-transform: uppercase;
+}

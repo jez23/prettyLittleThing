@@ -1,0 +1,33 @@
+.footer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding:20px;
+}
+.footer ul li{
+    text-decoration: none;
+    list-style: none;
+}
+.footer__payments {
+    background-color: black;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+}
+.footer__payments img{
+    height: 40px;
+}
+.footer h6{
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+@media only screen and (max-width: 800px) {
+    .footer{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding:20px;
+    }
+    .footer ul {
+        margin-bottom: 20px;
+    }
+}
