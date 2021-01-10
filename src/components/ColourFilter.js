@@ -5,23 +5,10 @@ import Context from  '../contexts/Context';
 
 const ColourFilter = ( ) => {
 
-    const { setProducts, colours, productsGlobal, setSubTotal , products} = useContext(Context) 
-
-    const filter = (e) => {
-        const colouredProducts = [...productsGlobal]
-        const matching = colouredProducts.filter(product => {
-            return product.colour === e;
-        })
-        setProducts([...matching]);
-    }
-    const showAll = (globalArray, products) => {
-        const subTotal = (array) => {
-            return array.reduce((acc, cur) => acc + cur.price * cur.quantity , 0);
-        }
-        setSubTotal(subTotal(globalArray));
-        setProducts(globalArray)
-    }
-  
+    const { colours, 
+            productsGlobal, 
+            filter,
+            showAll } = useContext(Context);
 
     return (
          <div className="colourFilter">
@@ -32,7 +19,7 @@ const ColourFilter = ( ) => {
                         return <option value={product} key={product}>{product}</option>
                     })}
                 </select>
-             <button className="btn white" onClick={() => showAll(productsGlobal, products)}>Show All</button>
+             <button className="btn white" onClick={() => showAll(productsGlobal)}>Show All</button>
         </div> 
     
     )
