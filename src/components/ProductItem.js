@@ -27,7 +27,7 @@ const ProductItem = ({ item }) => {
                 <div className="productItem__edit__increment">
                     <button className="btnCounter" onClick={() => decrement(products, item)}>-</button>
                         <input  min="0" type="number" value={item.quantity} onChange={changeQtyManually} id="quantity"></input>
-                    <button className="btnCounter" onClick={() => increment(products, item)}>+</button>
+                    <button  className="btnCounter" onClick={() => increment(products, item)}>+</button>
                 </div>
                 <div className="productItem__edit__delete">
                     <button className="btnRemove" onClick={() => deleteItem(products, item.id)}><i className="fa fa-trash" aria-hidden="true"></i> Remove</button>

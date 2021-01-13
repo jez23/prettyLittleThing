@@ -1,8 +1,10 @@
 import React from 'react';
-import { render } from '@testing-library/react'
+import { render , cleanup, fireEvent, screen} from '@testing-library/react'
 import ProductItem from './ProductItem';
-
+import '@testing-library/jest-dom/extend-expect';
 import { ConstProvider } from '../contexts/Context';
+
+afterEach(cleanup);
 
 describe('Render component', () => {
     test("should render the ProductItem component", () => {
@@ -24,11 +26,14 @@ describe('Render component', () => {
                 return this.quantity--;
             }
         }
+     
+
 
         render(
                 <ConstProvider>
                     <ProductItem item={testProduct} key={testProduct.id} />
                 </ConstProvider>
         )
+     
     })
 })

@@ -6,6 +6,9 @@ import PageTitle from '../PageTitle';
 import CartTable from '../CartTable';
 import ColourFilter from '../ColourFilter';
 
+
+
+
 const Cart = () => {
     return (
         <SectionContainer>
@@ -20,6 +23,7 @@ const Cart = () => {
             </div>
             <ColourFilter />
             <CartTable />
+            
         </SectionContainer>
     )
 }

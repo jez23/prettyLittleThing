@@ -1,12 +1,13 @@
 import React from 'react';
-import { render , screen} from '@testing-library/react'
+import { render , screen, cleanup} from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import Footer from './Footer';
 
+afterEach(cleanup);
 
 describe('Render component', () => {
     test("should render the footer component", () => {
         render(<Footer />)
-        screen.debug();
     })
 })
 describe('Test Footer headers are correct', () => {
@@ -14,7 +15,7 @@ describe('Test Footer headers are correct', () => {
         render(<Footer />);
     })
    test('should correctly match first footer header', () => {
-        screen.getByText('LET US HELP YOU');
+        expect(screen.getByText('LET US HELP YOU')).toBeInTheDocument()
     })
     test("should correctly match second footer header", () => {
         screen.getByText('ABOUT US');

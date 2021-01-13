@@ -8,6 +8,7 @@ export function ConstProvider({children}){
     const [subTotal, setSubTotal] = useState(0)  
     const [colours, setColours] = useState([]);
     const [productsGlobal, setProductsGlobal] = useState([]);
+    const [loader, setLoader] = useState(true);
    
     const increment = (array, item) => {
        
@@ -95,6 +96,7 @@ export function ConstProvider({children}){
         .then(objArray =>  {
             setProducts(objArray)
             setSubTotal(subTotalCal(objArray));
+            setLoader(false)
         })
         .catch(error =>  {throw error});
     }   
@@ -116,8 +118,9 @@ export function ConstProvider({children}){
             EmptyCartProduct,
             fetchRequest,
             filter,
-            showAll
-
+            showAll,
+            loader,
+            setLoader
         }}>
         {children}
         </Context.Provider>

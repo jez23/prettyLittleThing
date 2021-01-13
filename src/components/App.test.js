@@ -1,23 +1,15 @@
 import React from 'react';
-import { render , screen} from '@testing-library/react';
-
-
-import { createMemoryHistory } from 'history';
-import { Router } from 'react-router-dom';
-
+import { render, screen, cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 import App from './App';
+
+afterEach(cleanup);
 
 describe('Render component', () => {
     test("should render the APP component", () => {
 
-        const history = createMemoryHistory()
+        render(<App />)
 
-        render(
-            <Router history={history}>
-                <App />
-            </Router>
-           
-        )
-        screen.debug();
+        expect(screen.getByText('PrettyLittleThing')).toBeInTheDocument()
     })
 })

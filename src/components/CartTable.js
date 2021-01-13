@@ -6,10 +6,13 @@ import CartTableHeader from './CartTableHeader';
 import ProductItem  from './ProductItem';
 import SubTotal from './SubTotal';
 
+import Loader from './Loader';
+
 const CartTable = () => {
  
     const { products,
-            fetchRequest} = useContext(Context) 
+            fetchRequest,
+            loader} = useContext(Context) 
 
   
     useEffect(() => {
@@ -23,11 +26,12 @@ const CartTable = () => {
     return (
         <section className="cartTable">
                     <CartTableHeader />
-                <div className="cartTable__products">
+                 { loader?  <Loader />  :
+                     <div className="cartTable__products">
                     {
-                        shoppingCartEmpty(products)
+                       shoppingCartEmpty(products)
                     }
-                </div>
+                </div> }
                < SubTotal  />
 
         </section>
